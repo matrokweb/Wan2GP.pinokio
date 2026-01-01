@@ -1,0 +1,33 @@
+{
+  "pre": [{
+    "title": "Installa Miniconda Env",
+    "description": "Crea ambiente Python 3.10.9",
+    "cmd": "conda",
+    "message": "create -n wan2gp python=3.10.9 -y"
+  }],
+  "run": [{
+    "method": "shell.run",
+    "params": {
+      "venv": "env",
+      "message": "conda activate wan2gp && pip install torch==2.7.1 torchvision==0.22.1 torchaudio==2.7.1 --index-url https://download.pytorch.org/whl/cu128"
+    }
+  }, {
+    "method": "shell.run",
+    "params": {
+      "venv": "env",
+      "message": "pip install -U \"triton-windows<3.4\" || pip install -U \"triton<3.4\""
+    }
+  }, {
+    "method": "shell.run",
+    "params": {
+      "venv": "env",
+      "message": "pip install https://github.com/woct0rdho/SageAttention/releases/download/v2.2.0-windows/sageattention-2.2.0+cu128torch2.7.1-cp310-cp310-win_amd64.whl || (pip install \"setuptools<=75.8.2\" --force-reinstall && git clone https://github.com/thu-ml/SageAttention && cd SageAttention && pip install -e .)"
+    }
+  }, {
+    "method": "shell.run",
+    "params": {
+      "venv": "env",
+      "message": "pip install -r requirements.txt"
+    }
+  }]
+}
