@@ -1,0 +1,15 @@
+{
+  "run": [{
+    "method": "shell.run",
+    "params": {
+      "venv": "env",
+      "message": "python wgp.py",
+      "daemon": true
+    }
+  }, {
+    "method": "shell.run",
+    "params": {
+      "message": "xdg-open http://127.0.0.1:7860"
+    }
+  }]
+}
